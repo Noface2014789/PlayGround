@@ -15,7 +15,24 @@
     <canvas id="game-canvas" aria-label="3D Wildlands game"></canvas>
     <div class="vignette"></div>
 
-    <section id="main-menu" class="main-menu" aria-label="Main menu">
+    <section id="mode-select" class="mode-select" aria-label="Choose your controls">
+      <div class="mode-select-inner">
+        <span class="mode-kicker"><i></i> BEFORE YOU DEPLOY <i></i></span>
+        <h1>CHOOSE YOUR<br><span>CONTROL MODE</span></h1>
+        <p>Pick how you want to play. You can change this on your next visit.</p>
+        <div class="mode-options">
+          <button id="choose-pc" class="mode-option" data-control-mode="pc">
+            <span class="mode-icon pc-icon">⌨</span><b>PC</b><small>KEYBOARD &amp; MOUSE</small><span class="mode-keys">W A S D <i>·</i> MOUSE</span>
+          </button>
+          <button id="choose-mobile" class="mode-option" data-control-mode="mobile">
+            <span class="mode-icon mobile-icon">▯</span><b>MOBILE</b><small>TOUCH CONTROLS</small><span class="mode-keys">VIRTUAL STICK <i>·</i> TOUCH AIM</span>
+          </button>
+        </div>
+        <div class="mode-footer"><span>GUN OF DESTRUCTION</span><span>YOUR ISLAND. YOUR RULES.</span></div>
+      </div>
+    </section>
+
+    <section id="main-menu" class="main-menu hidden" aria-label="Main menu">
       <header class="menu-brand"><span class="brand-mark">G</span><span>GUN OF<br><span class="brand-light">DESTRUCTION</span></span></header>
       <div class="menu-content">
         <span class="menu-kicker"><i></i> THE FRONTIER AWAITS</span>
@@ -95,6 +112,17 @@
       <div class="hud-bottom"><div class="control-hints"><span><kbd>W A S D</kbd> MOVE / DRIVE</span><span><kbd>E</kbd> ENTER / EXIT</span><span><kbd>CLICK</kbd> FIRE / BOMB</span><span><kbd>SPACE</kbd> JUMP</span><span><kbd>R</kbd> RELOAD</span><span><kbd>G</kbd> BOMB</span><span><kbd>F</kbd> BUILD</span><span><kbd>ESC</kbd> MENU</span></div><div class="weapon-slot"><span class="slot-number">01</span><span class="slot-symbol">⌁</span><span class="slot-label">PRIMARY</span><span class="slot-key">1</span></div></div>
       <div id="toast" class="toast"></div>
     </section>
+    <div id="touch-controls" class="touch-controls" aria-label="Touch controls">
+      <div id="move-stick" class="move-stick" aria-label="Movement joystick"><span id="stick-knob"></span></div>
+      <div class="touch-actions">
+        <button class="touch-action touch-fire" data-action="fire">FIRE</button>
+        <button class="touch-action" data-action="jump">JUMP</button>
+        <button class="touch-action" data-action="vehicle">ENTER<br>EXIT</button>
+        <button class="touch-action" data-action="reload">RELOAD</button>
+        <button class="touch-action" data-action="bomb">BOMB</button>
+        <button class="touch-action" data-action="build">BUILD</button>
+      </div>
+    </div>
 
     <section id="pause-screen" class="modal-screen hidden"><div class="modal-card"><span class="section-kicker">TAKE A BREATHER</span><h2>PAUSED<span>.</span></h2><p>The island can wait.</p><button id="resume-button" class="drop-button"><span>BACK TO THE ISLAND</span><b>→</b></button><button id="quit-button" class="text-button">RETURN TO LOBBY</button></div></section>
     <section id="result-screen" class="modal-screen hidden"><div class="modal-card result-card"><span class="section-kicker">MATCH COMPLETE</span><h2 id="result-title">NICE RUN<span>.</span></h2><p id="result-copy">You made your mark on the island.</p><div class="result-stats"><div><b id="result-kills">0</b><small>ELIMINATIONS</small></div><div><b id="result-time">00:00</b><small>TIME SURVIVED</small></div></div><button id="again-button" class="drop-button"><span>DROP AGAIN</span><b>→</b></button><button id="result-lobby-button" class="text-button">RETURN TO LOBBY</button></div></section>
