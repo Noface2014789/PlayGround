@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#101619" />
+  <title>GUN OF DESTRUCTION — Drop into the unknown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-root">
+    <canvas id="game-canvas" aria-label="3D Wildlands game"></canvas>
+    <div class="vignette"></div>
+
+    <section id="main-menu" class="main-menu" aria-label="Main menu">
+      <header class="menu-brand"><span class="brand-mark">G</span><span>GUN OF<br><span class="brand-light">DESTRUCTION</span></span></header>
+      <div class="menu-content">
+        <span class="menu-kicker"><i></i> THE FRONTIER AWAITS</span>
+        <h1>GUN OF<br><span>DESTRUCTION</span></h1>
+        <p>Drop into the unknown.</p>
+        <nav class="menu-actions" aria-label="Game menu">
+          <button id="menu-play" class="menu-button menu-play"><span class="menu-button-icon">▶</span><span>PLAY</span><small>ENTER THE ISLAND</small></button>
+          <button id="menu-locker" class="menu-button"><span class="menu-button-icon">▣</span><span>LOCKER</span><small>GEAR &amp; RANGERS</small></button>
+          <button id="menu-options" class="menu-button"><span class="menu-button-icon">⚙</span><span>OPTIONS</span><small>GAME SETTINGS</small></button>
+        </nav>
+      </div>
+      <div class="menu-footer"><span>SEASON 04 <i></i> ISLAND: THE FRONTIER</span><span>WASD MOVE <i>·</i> MOUSE AIM</span></div>
+    </section>
+
+    <section id="lobby" class="screen hidden">
+      <header class="topbar">
+        <button id="back-to-menu" class="back-menu">← MAIN MENU</button>
+        <a class="brand" href="#" aria-label="Wildlands home"><span class="brand-mark">W</span><span>WILD<span class="brand-light">LANDS</span></span></a>
+        <div class="top-meta"><span class="live-dot"></span> SEASON 04 <i></i> ISLAND: <b>THE FRONTIER</b></div>
+        <button class="profile" aria-label="Your profile"><span class="profile-avatar">R</span><span class="profile-name">RANGER<br><small>LEVEL 08</small></span><span class="profile-chevron">⌄</span></button>
+      </header>
+
+      <main class="lobby-main">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR WILDEST DROP YET</div>
+          <h1>THE<br><span>FRONTIER</span></h1>
+          <p>Gear up. Build smart. Make this island yours.</p>
+        </div>
+
+        <div class="lobby-cards">
+          <section class="panel loadout-panel">
+            <div class="panel-heading"><div><span class="section-kicker">01 / BEFORE YOU DROP</span><h2>YOUR LOADOUT</h2></div><span class="heading-icon">↗</span></div>
+            <div class="loadout-content">
+              <div class="weapon-preview"><div class="weapon-glow"></div><div class="weapon-art" id="weapon-art">⌁</div><div class="weapon-index">A</div></div>
+              <div class="weapon-info"><span class="small-label">PRIMARY WEAPON</span><div class="weapon-name" id="weapon-name">RANGER AR</div><div class="weapon-desc" id="weapon-desc">Reliable at every range.</div><div class="weapon-stats"><span><i>DAMAGE</i><b id="stat-damage">34</b></span><span><i>FIRE RATE</i><b id="stat-rate">72</b></span><span><i>RANGE</i><b id="stat-range">68</b></span></div></div>
+            </div>
+            <div class="choice-row" id="weapon-choices" aria-label="Choose primary weapon">
+              <button class="choice active" data-weapon="ar"><span class="choice-symbol">⌁</span><span>RANGER AR</span><small>ASSAULT</small></button>
+              <button class="choice" data-weapon="shotgun"><span class="choice-symbol">⌖</span><span>BREACHER</span><small>SHOTGUN</small></button>
+              <button class="choice" data-weapon="sniper"><span class="choice-symbol">⊕</span><span>LONGSHOT</span><small>MARKSMAN</small></button>
+            </div>
+            <div class="divider"></div>
+            <div class="panel-heading skin-heading"><div><span class="section-kicker">02 / PICK YOUR LOOK</span><h2>CHOOSE A RANGER</h2></div><span class="skin-count">03 UNLOCKED</span></div>
+            <div class="skin-row" id="skin-choices" aria-label="Choose a character">
+              <button class="skin-card active" data-skin="nova"><span class="skin-portrait portrait-nova"><i></i><b></b></span><span class="skin-caption"><b>NOVA</b><small>PATHFINDER</small></span><span class="skin-check">✓</span></button>
+              <button class="skin-card" data-skin="mako"><span class="skin-portrait portrait-mako"><i></i><b></b></span><span class="skin-caption"><b>MAKO</b><small>TRAILBLAZER</small></span><span class="skin-check">✓</span></button>
+              <button class="skin-card" data-skin="rook"><span class="skin-portrait portrait-rook"><i></i><b></b></span><span class="skin-caption"><b>ROOK</b><small>STONEWALL</small></span><span class="skin-check">✓</span></button>
+            </div>
+          </section>
+
+          <section class="panel drop-panel">
+            <div class="panel-heading"><div><span class="section-kicker">03 / FIND YOUR FIGHT</span><h2>CHOOSE A MODE</h2></div><button id="refresh-servers" class="refresh" title="Refresh servers">↻</button></div>
+            <div class="server-list" id="server-list">
+              <button class="server-card active" data-server="frontier"><span class="server-emblem">⌁</span><span class="server-copy"><b>FRONTIER — SOLO</b><small>Solo practice <i class="ping-good">● READY</i></small></span><span class="server-slots"><b>12</b><small>/ 25</small></span></button>
+              <button class="server-card" data-server="wilds"><span class="server-emblem emblem-2">◈</span><span class="server-copy"><b>THE WILDS — DUOS</b><small>AI squadmate vs AI <i class="ping-mid">● DUOS</i></small></span><span class="server-slots"><b>18</b><small>/ 25</small></span></button>
+              <button class="server-card" data-server="outpost"><span class="server-emblem emblem-3">⌂</span><span class="server-copy"><b>OUTPOST — BUILD</b><small>Build practice <i class="ping-good">● READY</i></small></span><span class="server-slots"><b>07</b><small>/ 25</small></span></button>
+            </div>
+            <div class="server-note" id="mode-note"><span>◉</span> SOLO PRACTICE <i></i> AI RANGERS FILL OPEN SLOTS</div>
+            <button id="drop-button" class="drop-button"><span>DROP INTO THE FRONTIER</span><b>→</b></button>
+            <div class="drop-foot"><span>LOCAL PRACTICE MODES</span><span><i></i> ISLAND READY</span></div>
+          </section>
+        </div>
+        <div class="lobby-bottom"><span>WASD TO MOVE <i>·</i> MOUSE TO AIM <i>·</i> CLICK TO FIRE <i>·</i> F TO BUILD</span><span>THE ISLAND IS YOURS TO SHAPE <b>↗</b></span></div>
+      </main>
+      <div class="side-label">WILDLANDS <span>—</span> 04</div>
+    </section>
+
+    <section id="hud" class="hidden" aria-live="polite">
+      <div class="hud-top"><div class="hud-location"><span class="location-pin">⌖</span><span><small id="match-mode-label">YOU ARE DROPPING INTO</small><b>THE FRONTIER</b></span></div><div class="alive-pill"><span class="live-dot"></span><b id="alive-count">12</b><span>IN THE FIELD</span></div><button id="leave-button" class="leave-button">LEAVE MATCH <span>ESC</span></button></div>
+      <div class="health-wrap"><div class="health-icon">✚</div><div class="health-bars"><div class="health-text"><span>VITALS</span><b id="health-value">100</b></div><div class="health-track"><i id="health-bar"></i></div><div class="shield-track"><i id="shield-bar"></i></div></div></div>
+      <div class="crosshair"><i></i><i></i><i></i><i></i><b></b></div>
+      <div class="hit-marker" id="hit-marker">✕</div>
+      <div class="damage-flash" id="damage-flash"></div>
+      <div class="center-message" id="center-message"></div>
+      <div class="hud-left"><div class="mini-map"><canvas id="map-canvas" width="156" height="156"></canvas><span class="map-label">FRONTIER ISLAND</span><span class="map-compass">N</span></div><div class="objective"><span class="objective-icon">◎</span><span><small>FIELD OBJECTIVE</small><b id="objective-text">Outlast the island</b></span></div></div>
+      <div class="hud-right"><div class="build-counter"><span class="build-icon">▧</span><span><small>BUILD MATERIAL</small><b id="build-count">42</b></span><span class="build-key">F</span></div><div class="ammo-card"><div class="ammo-top"><span id="weapon-hud-name">RANGER AR</span><span id="weapon-hud-type">ASSAULT</span></div><div class="ammo-number"><b id="ammo-now">30</b><span>/</span><small id="ammo-reserve">120</small><span class="reload-indicator" id="reload-indicator"></span></div><div class="ammo-track"><i id="ammo-bar"></i></div></div></div>
+      <div class="hud-bottom"><div class="control-hints"><span><kbd>W A S D</kbd> MOVE / DRIVE</span><span><kbd>E</kbd> ENTER / EXIT</span><span><kbd>CLICK</kbd> FIRE / BOMB</span><span><kbd>SPACE</kbd> JUMP</span><span><kbd>R</kbd> RELOAD</span><span><kbd>G</kbd> BOMB</span><span><kbd>F</kbd> BUILD</span><span><kbd>ESC</kbd> MENU</span></div><div class="weapon-slot"><span class="slot-number">01</span><span class="slot-symbol">⌁</span><span class="slot-label">PRIMARY</span><span class="slot-key">1</span></div></div>
+      <div id="toast" class="toast"></div>
+    </section>
+
+    <section id="pause-screen" class="modal-screen hidden"><div class="modal-card"><span class="section-kicker">TAKE A BREATHER</span><h2>PAUSED<span>.</span></h2><p>The island can wait.</p><button id="resume-button" class="drop-button"><span>BACK TO THE ISLAND</span><b>→</b></button><button id="quit-button" class="text-button">RETURN TO LOBBY</button></div></section>
+    <section id="result-screen" class="modal-screen hidden"><div class="modal-card result-card"><span class="section-kicker">MATCH COMPLETE</span><h2 id="result-title">NICE RUN<span>.</span></h2><p id="result-copy">You made your mark on the island.</p><div class="result-stats"><div><b id="result-kills">0</b><small>ELIMINATIONS</small></div><div><b id="result-time">00:00</b><small>TIME SURVIVED</small></div></div><button id="again-button" class="drop-button"><span>DROP AGAIN</span><b>→</b></button><button id="result-lobby-button" class="text-button">RETURN TO LOBBY</button></div></section>
+    <section id="options-screen" class="modal-screen hidden" aria-label="Game options"><div class="modal-card options-card"><button id="options-close" class="modal-close" aria-label="Close options">×</button><span class="section-kicker">MAKE IT YOURS</span><h2>OPTIONS<span>.</span></h2><p>Adjust your game settings.</p><label class="option-row" for="sensitivity"><span><b>LOOK SENSITIVITY</b><small>Mouse and touch camera speed</small></span><input id="sensitivity" type="range" min="50" max="200" value="100"><strong id="sensitivity-value">100%</strong></label><label class="option-row" for="quality"><span><b>GRAPHICS QUALITY</b><small>Rendering detail and performance</small></span><select id="quality"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label><button id="options-done" class="drop-button"><span>DONE</span><b>✓</b></button></div></section>
+    <div id="loading" class="loading"><span class="brand-mark">W</span><b>BUILDING YOUR ISLAND</b><i><span></span></i></div>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
